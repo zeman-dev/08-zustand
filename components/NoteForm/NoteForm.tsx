@@ -27,31 +27,6 @@ export default function NoteForm({ onClose }: NoteFormProps) {
     tag: 'Todo',
   };
 
-  //////CLOSE ON BACKDROP CLICK //////////
-
-  // const handleBackdropClick = (event: React.MouseEvent<HTMLDivElement>) => {
-  //   if (event.target === event.currentTarget) {
-  //     onClose();
-  //   }
-  // };
-  
-  // useEffect(() => {
-	//   const handleKeyDown = (e: KeyboardEvent) => {
-	//     if (e.key === "Escape") {
-	//       onClose();
-	//     }
-	//   };
-	
-	//   document.addEventListener("keydown", handleKeyDown);
-  //   document.body.style.overflow = "hidden";
-	
-	//   return () => {
-	//     document.removeEventListener("keydown", handleKeyDown);
-  //     document.body.style.overflow = "";
-	//   };
-	// }, [onClose]);
-
-  ////////////////////////////////////////
 
   //// MUTATION METOD(POST) CREATE TASK//////////
   const mutation = useMutation({
