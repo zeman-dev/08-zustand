@@ -15,9 +15,13 @@ export default async function App(props : AppProps) {
 
   const queryClient = new QueryClient()
 
+    const tagFromUrl = (await props.params).slug[0] === "All" ? "" : (await props.params).slug[0];
+  const page = 1;
+  const search = "";
+
   await queryClient.prefetchQuery({
-    queryKey: ['notes', "", 1],
-    queryFn: () => FetchNotes("", 1),
+    queryKey: ['notes', search, page, tagFromUrl],
+    queryFn: () => FetchNotes(search, page, tagFromUrl),
   })
 
 
