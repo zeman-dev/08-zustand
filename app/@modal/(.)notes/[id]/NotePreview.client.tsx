@@ -16,17 +16,18 @@ export default function NotePreviewClient() {
   });
 const router = useRouter();
 
-  const HandleClose = ()=> router.back;
+  const HandleClose = ()=> router.back();
   return (
     <>
-      <Modal onClose={HandleClose()}>
+      <Modal onClose={HandleClose}>
         <main className={css.main}>
           <div className={css.container}>
+            <button onClick={HandleClose} className={css.backBtn}>Back</button>
             {isLoading && <p>Loading, please wait...</p>}
             {isError && <p>Something went wrong.</p>}
             {data && (
               <div className={css.item}>
-                <button onClick={HandleClose()} className={css.backBtn}>Back</button>
+                
                 <div className={css.header}>
                   <h2>{data?.title}</h2>
                 </div>

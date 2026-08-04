@@ -20,14 +20,12 @@ export default async function App(props : AppProps) {
     queryFn: () => FetchNotes("", 1),
   })
 
-  const currentTag = (await props.params).slug[0].toLocaleLowerCase();
 
-console.log(currentTag);
   return (
     <>
       <div className={css.app}>
        <HydrationBoundary state={dehydrate(queryClient)}>
-      <NotesClient currentTag ={currentTag}/>
+      <NotesClient currentTag ={(await props.params).slug[0]}/>
     </HydrationBoundary>
       </div>
     </>

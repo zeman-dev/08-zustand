@@ -8,9 +8,10 @@ export default function Sidebar() {
     <ul className={css.menuList}>
       {/* список тегів */}
       {tags.map(tag => {
+        const hrefTag = tag === "All" ? "all" : tag;
         return (
           <li key={tag} className={css.menuItem}>
-            <Link href={`/notes/filter/${tag}`} className={css.menuLink}>
+            <Link href={`/notes/filter/${hrefTag}`} className={css.menuLink}>
               {tag}
             </Link>
           </li>
