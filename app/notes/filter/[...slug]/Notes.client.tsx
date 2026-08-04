@@ -11,7 +11,7 @@ import NoteForm from '@/components/NoteForm/NoteForm';
 import Pagination from '@/components/Pagination/Pagination';
 
 type NotesClientProps ={
-  currentTag: string[];
+  currentTag: string;
 }
 
 export default function NotesClient({currentTag} : NotesClientProps){
@@ -20,14 +20,13 @@ const [topic, setTopic] = useState('');
 
   const [currentPage, setCurrentPage] = useState(1);
 
-  const [tag, setTag] = useState(currentTag[0]);
 
   // HTTP Request
   const handleSearch = useDebouncedCallback((nextTopic : string) => { setCurrentPage(1); return(setTopic(nextTopic))}, 500);
   
   const { data, isLoading, isError } = useQuery({
-    queryKey: ['notes', topic, currentPage, tag],
-    queryFn: () => FetchNotes(topic, currentPage, tag),
+    queryKey: ['notes', topic, currentPage, currentTag],
+    queryFn: () => FetchNotes(topic, currentPage, currentTag),
     placeholderData: keepPreviousData,
   });
   /////////////////////////////////////////////////////

@@ -11,7 +11,7 @@ type AppProps ={
   params: Promise<{slug: string[]}>;
 }
 
-export default async function App(params : AppProps) {
+export default async function App(props : AppProps) {
 
   const queryClient = new QueryClient()
 
@@ -20,11 +20,14 @@ export default async function App(params : AppProps) {
     queryFn: () => FetchNotes("", 1),
   })
 
+  const currentTag = (await props.params).slug[0].toLocaleLowerCase();
+
+console.log(currentTag);
   return (
     <>
       <div className={css.app}>
        <HydrationBoundary state={dehydrate(queryClient)}>
-      <NotesClient currentTag ={(await params.params).slug}/>
+      <NotesClient currentTag ={currentTag}/>
     </HydrationBoundary>
       </div>
     </>
