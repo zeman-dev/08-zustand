@@ -8,8 +8,12 @@ interface FetchNotesResponse {
 
 export async function FetchNotes(
   query: string = '',
-  currentPage: number
+  currentPage: number,
+  tag?: string,
 ): Promise<FetchNotesResponse> {
+  if(tag === 'all' || tag === 'All'){
+    tag = undefined;
+  }
   const response = await axios.get<FetchNotesResponse>(
     `https://notehub-public.goit.study/api/notes/`,
     {
@@ -17,6 +21,7 @@ export async function FetchNotes(
         search: query,
         page: currentPage,
         perPage: 12,
+        tag,
       },
       headers: {
         Authorization: `Bearer ${process.env.NEXT_PUBLIC_NOTEHUB_TOKEN}`,

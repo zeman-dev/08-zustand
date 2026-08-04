@@ -7,7 +7,11 @@ import {
   QueryClient,
 } from '@tanstack/react-query'
 
-export default async function App() {
+type AppProps ={
+  params: Promise<{slug: string[]}>;
+}
+
+export default async function App(params : AppProps) {
 
   const queryClient = new QueryClient()
 
@@ -20,7 +24,7 @@ export default async function App() {
     <>
       <div className={css.app}>
        <HydrationBoundary state={dehydrate(queryClient)}>
-      <NotesClient/>
+      <NotesClient currentTag ={(await params.params).slug}/>
     </HydrationBoundary>
       </div>
     </>
