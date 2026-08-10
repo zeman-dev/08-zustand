@@ -17,7 +17,11 @@ export async function generateMetadata({params}:NoteDetailsProps): Promise<Metad
         title: note.title,
         description: note.content,
         url: `https://notehub.com/notes/${note.id}`,
-        images: 'https://ac.goit.global/fullstack/react/notehub-og-meta.jpg',
+        images: [{url:'https://ac.goit.global/fullstack/react/notehub-og-meta.jpg',
+          width: 1200,
+          height: 630,
+          alt: note.title,
+        }],
       }
     }
 }

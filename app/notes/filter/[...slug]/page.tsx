@@ -18,7 +18,11 @@ export async function generateMetadata({params}:AppProps): Promise<Metadata> {
     title: `Notes - ${(await params).slug[0]}`,
     description: `Browse notes tagget with ${(await params).slug[0]}.Notehub allowed you to filterand viewnotes based on specific tags for better experiance`,
     url: "https://notehub.com/",
-    images: "https://ac.goit.global/fullstack/react/notehub-og-meta.jpg",
+    images: [{url:"https://ac.goit.global/fullstack/react/notehub-og-meta.jpg",
+      width: 1200,
+          height: 630,
+          alt: 'App Improvements',
+    }],
   }
  }
 }
@@ -34,7 +38,6 @@ export default async function App(props : AppProps) {
     const tagFromUrl = (await props.params).slug[0] === "All" ? "" : (await props.params).slug[0];
   const page = 1;
   const search = "";
-
   await queryClient.prefetchQuery({
     queryKey: ['notes', search, page, tagFromUrl],
     queryFn: () => FetchNotes(search, page, tagFromUrl),
