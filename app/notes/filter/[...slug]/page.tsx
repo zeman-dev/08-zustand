@@ -6,22 +6,6 @@ import {
   HydrationBoundary,
   QueryClient,
 } from '@tanstack/react-query'
-import { Metadata } from 'next';
-
-
-export async function generateMetadata({params}:AppProps): Promise<Metadata> {
- return{
-    title: `Notes - ${(await params).slug[0]}`,
-  description: `Browse notes tagget with ${(await params).slug[0]}.Notehub allowed you to filterand viewnotes based on specific tags for better experiance`,
-  openGraph: {
-    type: "website",
-    title: `Notes - ${(await params).slug[0]}`,
-    description: `Browse notes tagget with ${(await params).slug[0]}.Notehub allowed you to filterand viewnotes based on specific tags for better experiance`,
-    url: "https://notehub.com/",
-    images: "https://ac.goit.global/fullstack/react/notehub-og-meta.jpg",
-  }
- }
-}
 
 type AppProps ={
   params: Promise<{slug: string[]}>;
