@@ -36,7 +36,7 @@ const geistMono = Geist_Mono({
   subsets: ['latin'],
 });
 
-const geistRoboto = Geist({
+const geistRoboto = Roboto({
   variable: '--font-roboto',
   subsets: ['latin'],
   weight: ['400', '700'],
@@ -55,7 +55,7 @@ export default function RootLayout({
       lang="en"
       className={`${geistSans.variable} ${geistMono.variable} ${geistRoboto.variable}`}
     >
-      <body>
+      <body className={`${geistRoboto.variable}`}>
         <TanStackProvider>
           <Header />
           {modal}

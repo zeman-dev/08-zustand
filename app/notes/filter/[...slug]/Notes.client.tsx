@@ -6,8 +6,8 @@ import { FetchNotes } from '@/lib/api';
 import { useDebouncedCallback } from 'use-debounce';
 import { keepPreviousData, useQuery } from '@tanstack/react-query';
 import NoteList from '@/components/NoteList/NoteList';
-import Modal from '@/components/Modal/Modal';
-import NoteForm from '@/components/NoteForm/NoteForm';
+// import Modal from '@/components/Modal/Modal';
+// import NoteForm from '@/components/NoteForm/NoteForm';
 import Pagination from '@/components/Pagination/Pagination';
 import Link from 'next/link';
 
@@ -42,7 +42,7 @@ const [topic, setTopic] = useState('');
               totalPages={data.totalPages}
             />
           )}
-          <Link className={css.button} href={'/notes/action/create/'}>
+          <Link className={css.button} href={'/notes/action/create'}>
             Create note +
           </Link>
         </header>

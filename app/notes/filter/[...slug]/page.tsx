@@ -12,11 +12,11 @@ import { Metadata } from 'next';
 export async function generateMetadata({params}:AppProps): Promise<Metadata> {
  return{
     title: `Notes - ${(await params).slug[0]}`,
-  description: `Browse notes tagget with ${(await params).slug[0]}.Notehub allowed you to filterand viewnotes based on specific tags for better experiance`,
+  description: `Browse notes tagged with ${(await params).slug[0]}.Notehub allows you to filter and view notes based on specific tags for better experience`,
   openGraph: {
     type: "website",
     title: `Notes - ${(await params).slug[0]}`,
-    description: `Browse notes tagget with ${(await params).slug[0]}.Notehub allowed you to filterand viewnotes based on specific tags for better experiance`,
+    description: `Browse notes tagged with ${(await params).slug[0]}.Notehub allows you to filter and view notes based on specific tags for better experience`,
     url: "https://notehub.com/",
     images: [{url:"https://ac.goit.global/fullstack/react/notehub-og-meta.jpg",
       width: 1200,
