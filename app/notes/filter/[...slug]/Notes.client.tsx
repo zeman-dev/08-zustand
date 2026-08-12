@@ -9,6 +9,7 @@ import NoteList from '@/components/NoteList/NoteList';
 import Modal from '@/components/Modal/Modal';
 import NoteForm from '@/components/NoteForm/NoteForm';
 import Pagination from '@/components/Pagination/Pagination';
+import Link from 'next/link';
 
 type NotesClientProps ={
   currentTag: string;
@@ -29,14 +30,6 @@ const [topic, setTopic] = useState('');
     queryFn: () => FetchNotes(topic, currentPage, currentTag),
     placeholderData: keepPreviousData,
   });
-  /////////////////////////////////////////////////////
-  // Modal
-  const [isModalOpen, setIsModalOpen] = useState(false);
-
-  const openModal = () => setIsModalOpen(true);
-
-  const closeModal = () => setIsModalOpen(false);
-
     return(
         <><header className={css.toolbar}>
           <SearchBox onSearch={handleSearch}/>
@@ -49,13 +42,10 @@ const [topic, setTopic] = useState('');
               totalPages={data.totalPages}
             />
           )}
-          <button className={css.button} onClick={openModal}>
-            Create Task
-          </button>
+          <Link className={css.button} href={'/notes/action/create/'}>
+            Create note +
+          </Link>
         </header>
-        {isModalOpen && (
-          <Modal onClose={closeModal}><NoteForm onClose={closeModal}/></Modal>
-        )}
         {data && data.notes.length > 0 && <NoteList notes={data.notes} />}
         </>
     );

@@ -31,9 +31,9 @@ export async function FetchNotes(
   return response.data;
 }
 
-interface CreatedNote {
+export type  CreatedNote = {
   title: string;
-  content: string | null;
+  content: string;
   tag: string;
 }
 
