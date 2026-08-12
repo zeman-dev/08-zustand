@@ -1,3 +1,4 @@
+'use client'
 import { create } from 'zustand';
 import { CreatedNote } from '../api';
 import { persist } from 'zustand/middleware';
